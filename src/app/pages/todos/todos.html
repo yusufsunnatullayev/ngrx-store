@@ -1,0 +1,32 @@
+<div class="w-full flex flex-col gap-10 p-4">
+  <div class="w-full flex items-center justify-between">
+    <h1 class="text-2xl font-semibold">Todos</h1>
+    <div class="flex items-center gap-3">
+      <button
+        class="py-2 px-4 rounded-lg border text-base font-medium cursor-pointer hover:bg-gray-100"
+        (click)="openAddTodoDialog()"
+      >
+        + Add todo
+      </button>
+      <button
+        routerLink="/"
+        class="py-2 px-4 rounded-lg bg-blue-500 text-base font-medium cursor-pointer text-white hover:bg-blue-400"
+      >
+        Go to home
+      </button>
+    </div>
+  </div>
+
+  @if (loading$ | async) {
+    <p>Loading...</p>
+  }
+
+  <div class="w-full flex flex-col gap-2">
+    @for (todo of todos$ | async; track todo.id) {
+      <div>
+        <input type="checkbox" [checked]="todo.completed" />
+        {{ todo.title }}
+      </div>
+    }
+  </div>
+</div>
