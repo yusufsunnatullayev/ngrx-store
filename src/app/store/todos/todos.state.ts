@@ -43,4 +43,11 @@ export const todosReducer = createReducer(
     ...state,
     todos: state.todos.map((t) => (t.id === todo.id ? { ...t, completed: !t.completed } : t)),
   })),
+
+  on(TodosActions.deleteTodoSuccess, (state, { id }) => {
+    return {
+      ...state,
+      todos: state.todos.filter((t) => t.id !== id),
+    };
+  }),
 );

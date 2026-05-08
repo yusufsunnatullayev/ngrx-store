@@ -23,7 +23,11 @@ export class TodosComponent implements OnInit {
     this.store.dispatch(TodoActions.loadTodos());
   }
 
-  openAddTodoDialog() {
+  openAddTodoDialog(): void {
     this.dialog.open(AddTodoComponent, { width: '350px' });
+  }
+
+  deleteTodo(id: number): void {
+    this.store.dispatch(TodoActions.deleteTodo({ id }));
   }
 }

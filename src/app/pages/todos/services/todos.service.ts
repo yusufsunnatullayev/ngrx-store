@@ -22,7 +22,7 @@ export class TodosService {
     return this.http.put<Todo>(`${this.api}/${id}`, todo);
   }
 
-  deleteTodo(id: number): Observable<Todo> {
-    return this.http.delete<Todo>(`${this.api}/${id}`);
+  deleteTodo(id: number) {
+    return this.http.delete(`${this.api}/${id}`);
   }
 }

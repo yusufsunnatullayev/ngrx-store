@@ -26,6 +26,7 @@
       <div>
         <input type="checkbox" [checked]="todo.completed" />
         {{ todo.title }}
+        <button (click)="deleteTodo(todo.id)" class="border cursor-pointer">Delete</button>
       </div>
     }
   </div>

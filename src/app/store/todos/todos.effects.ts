@@ -41,4 +41,17 @@ export class TodosEffects {
       }),
     );
   });
+
+  deleteTodo$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(TodosActions.deleteTodo),
+      mergeMap(({ id }) => {
+        return this.todosService.deleteTodo(id).pipe(
+          map(() => {
+            return TodosActions.deleteTodoSuccess({ id });
+          }),
+        );
+      }),
+    );
+  });
 }

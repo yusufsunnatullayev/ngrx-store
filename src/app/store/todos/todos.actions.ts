@@ -19,4 +19,9 @@ export const addTodoSuccess = createAction('[Todo] Add Todo Success', props<{ to
 
 export const deleteTodo = createAction('[Todo] Delete Todo', props<{ id: number }>());
 
+export const deleteTodoSuccess = createAction(
+  '[Todo] Delete Todo Success',
+  props<{ id: number }>(),
+);
+
 export const toggleTodo = createAction('[Todo] Toggle Todo', props<{ todo: Todo }>());
