@@ -6,6 +6,7 @@ import { AsyncPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Dialog } from '@angular/cdk/dialog';
 import { AddTodoComponent } from './components/add-todo/add-todo';
+import { Todo } from './types/todos';
 
 @Component({
   selector: 'app-todos',
@@ -25,6 +26,10 @@ export class TodosComponent implements OnInit {
 
   openAddTodoDialog(): void {
     this.dialog.open(AddTodoComponent, { width: '350px' });
+  }
+
+  toggleTodo(todo: Todo): void {
+    this.store.dispatch(TodoActions.toggleTodo({ todo }));
   }
 
   deleteTodo(id: number): void {

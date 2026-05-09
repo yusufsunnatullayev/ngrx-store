@@ -54,4 +54,16 @@ export class TodosEffects {
       }),
     );
   });
+
+  toggleTodo$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(TodosActions.toggleTodo),
+      mergeMap(({ todo }) => {
+        const updated = { ...todo, completed: !todo.completed };
+        return this.todosService
+          .updateTodo(todo.id, updated)
+          .pipe(map((updatedTodo) => TodosActions.toggleTodoSuccess({ todo: updatedTodo })));
+      }),
+    );
+  });
 }
